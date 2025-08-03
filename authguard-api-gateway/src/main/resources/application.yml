@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+          - id: "authguard-user-service"
+            uri: lb://AUTHGUARD-USER-service
+            predicates:
+            - Path=/user/**
+            filters:
+                - StripPrefix=1
+
+
+      
