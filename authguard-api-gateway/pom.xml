@@ -39,11 +39,42 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.12.6</version>
+		</dependency>
+		<!-- <dependency>
+  			<groupId>org.springframework.cloud</groupId>
+  			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId> 
+		</dependency> -->
+		
+<!--This dependency provides the implementation of the JWT functionality specified by the jjwt-api.
+It's marked as runtime, meaning it is only required at runtime and not during compilation.-->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>0.12.6</version>
+			<scope>runtime</scope>
+		</dependency>
+		
+<!--This provides support for JSON serialization and deserialization using Jackson.
+It allows JWT payloads to be serialized into JSON and deserialized back into Java objects.-->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>0.12.6</version>
+			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>

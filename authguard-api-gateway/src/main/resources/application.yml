@@ -5,11 +5,27 @@ spring:
         webflux:
           routes:
           - id: "authguard-user-service"
-            uri: lb://AUTHGUARD-USER-service
+            uri: lb://AUTHGUARD-USER-SERVICE
             predicates:
             - Path=/user/**
             filters:
                 - StripPrefix=1
+                - name : UserFilter
+          - id: "authguard-app-service"
+            uri: lb://AUTHGUARD-APP-SERVICE  
+            predicates:
+            - Path=/api/v1/apps/**
+            filters:
+            - StripPrefix=2
+            - name : AuthenticationFilter
+              args:
+                enabled: true
+          - id : "authguard-client-service"
+            uri: lb://AUTHGUARD-CLIENT-SERVICE
+            predicates:
+            - Path=/api/v1/client/**
+            filters:
+            - StripPrefix=2
 
 
       
