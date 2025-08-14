@@ -18,7 +18,7 @@ public class LoggerFilter implements Ordered, GlobalFilter {
         log.info("Loging from global filte : Pre " + exchange.getRequest().getURI());
         // postfilter
         return chain.filter(exchange).then(Mono.fromRunnable(() -> {
-            log.info("Loging from global filte : pos " + exchange.getRequest().getURI());
+            log.info("Loging from global filte : post " + exchange.getRequest().getURI());
 
         }));
     }

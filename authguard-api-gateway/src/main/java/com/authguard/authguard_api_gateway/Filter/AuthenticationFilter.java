@@ -47,10 +47,11 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                 try {
 
                     String token = tokenHeader.substring(7).trim();
-                    log.info("token : {}", token);
+                    // log.info("token : {}", token);
                     String userId = jwtService.generateUserIdFromToken(token);
                     ServerWebExchange mutatedRequest = exchange.mutate().request(r -> r.header("X-USER-Id", userId))
                             .build();
+                    log.info("Authentication Sucessful {}",  userId);
                     return chain.filter(mutatedRequest);
 
                 } catch (JwtException e) {
